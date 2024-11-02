@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Monitor, Smartphone, Settings2, BarChart3, ChevronRight, Star } from "lucide-react"
 import { PortfolioSection } from "@/components/sections/portfolio-section"
 import Image from "next/image"
+import ProductsSection from "@/components/sections/products-section "
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background py-20 md:py-32">
         <Image
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&auto=format&fit=crop&q=80"
+          src="https://mls-371939617.imgix.net/images/slider/05.jpg?w=1800&auto=format&fit=crop&q=80"
           alt="Technology Background"
           fill
           className="object-cover object-center"
@@ -38,15 +39,68 @@ export default function Home() {
           </div>
         </div>
       </section>
+    <ProductsSection/>
+      {/* Portfolio Section */}
+      <PortfolioSection />
 
-      {/* Rest of the sections remain unchanged */}
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-4 text-3xl font-bold">What Our Clients Say</h2>
+            <p className="mb-12 text-muted-foreground">
+              Don't just take our word for it
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CEO, TechCorp",
+                content: "Working with MindLabs has been transformative for our business. Their expertise and dedication are unmatched.",
+                rating: 5,
+              },
+              {
+                name: "Michael Chen",
+                role: "CTO, InnovateCo",
+                content: "The team's technical knowledge and problem-solving abilities exceeded our expectations.",
+                rating: 5,
+              },
+              {
+                name: "Emily Brown",
+                role: "Director, FutureScale",
+                content: "MindLabs delivered our project on time and within budget. Their attention to detail is impressive.",
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <Card key={index} className="transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="mb-4 flex">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="mb-4 text-muted-foreground">{testimonial.content}</p>
+                  <div className="flex items-center">
+                    <div>
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+  {/* Rest of the sections remain unchanged */}
       {/* Services Section */}
       <section className="bg-muted/50 py-20">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold">Digital transformation services that help you grow.</h2>
+            <h2 className="mb-4 text-3xl font-bold">Empowering Growth Through Digital Transformation.</h2>
             <p className="mb-12 text-muted-foreground">
-              Fortune 100 companies and established brands trust our enterprise software development.
+              Trusted by Fortune 100 companies and leading brands to drive innovation and elevate enterprise solutions.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -114,60 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <PortfolioSection />
-
-      {/* Testimonials Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold">What Our Clients Say</h2>
-            <p className="mb-12 text-muted-foreground">
-              Don't just take our word for it
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                name: "Sarah Johnson",
-                role: "CEO, TechCorp",
-                content: "Working with MindLabs has been transformative for our business. Their expertise and dedication are unmatched.",
-                rating: 5,
-              },
-              {
-                name: "Michael Chen",
-                role: "CTO, InnovateCo",
-                content: "The team's technical knowledge and problem-solving abilities exceeded our expectations.",
-                rating: 5,
-              },
-              {
-                name: "Emily Brown",
-                role: "Director, FutureScale",
-                content: "MindLabs delivered our project on time and within budget. Their attention to detail is impressive.",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="transition-all hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="mb-4 text-muted-foreground">{testimonial.content}</p>
-                  <div className="flex items-center">
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
+    
       {/* CTA Section */}
       <section className="bg-primary text-primary-foreground">
         <div className="container py-20">
